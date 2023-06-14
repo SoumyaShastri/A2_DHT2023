@@ -23,6 +23,6 @@ if((is.numeric(as.numeric(user_prompt)))
   } else {
     print(paste(user_prompt, "is not a Narcississtic number"))
   } 
- else {
+} else {
   print("Entry is not valid, Terminating task. Please ensure to enter a three digit positive number")
 }
