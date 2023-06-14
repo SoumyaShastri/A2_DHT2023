@@ -1,11 +1,28 @@
 #Prompt the user to enter a three digit positive number
-#*Check if the user input is numeric. If not, print an error message and quit.
-#*Check if the number is narcissistic. A narcissistic number, or an Armstrong 
-#*number, is a number that is equal to the sum of the cubes of its own digits. 
-#*153, 370, 371, 407 are three digit Armstrong numbers.
-#*Display the result with an appropriate message, e.g. “127 is not an 
-#*Armstrong number” or “370 is a narcissistic number” or any additional fun 
-#*text you may want to add.
-#*TEST TEST 
-#*Another test 
-#*
+user_prompt <- readline(prompt = "Please enter a three digit positive number: ")
+
+#*The code that now follows is defensive programming and ensures that the user 
+#*enters a numeric value, a positive value, and a three digit number. 
+
+if((is.numeric(as.numeric(user_prompt))) 
+   & (as.numeric(user_prompt) %% 1 == 0)
+   & (nchar(user_prompt) == 3)) {
+  
+  #*To test if the user prompt is a Narcissistic number, the digits within the 
+  #*prompt will have to be split. 
+  split_prompt <- as.numeric(strsplit(user_prompt, "")[[1]])
+  
+  #*To determine the sum of cubes of all the individual digits 
+  sum_digits <- sum(split_prompt^3)
+  
+  #*If sum_digits is equal to user_prompt, it is a narcissistic number, if not 
+  #*a message will indicate so 
+  if(sum_digits == user_prompt){
+    print(paste(user_prompt, "is a Narcississtic number"))
+    
+  } else {
+    print(paste(user_prompt, "is not a Narcississtic number"))
+  } 
+ else {
+  print("Entry is not valid, Terminating task. Please ensure to enter a three digit positive number")
+}
